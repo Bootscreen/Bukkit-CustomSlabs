@@ -14,6 +14,21 @@ public class BlockListener implements Listener{
 	public BlockListener(CustomSlabs instance) {
 	plugin = instance;
 	}
+
+	/*@EventHandler
+	public void onBlockBreak(BlockBreakEvent event)
+	{		
+		SpoutBlock block = (SpoutBlock) event.getBlock();
+		if(block.isCustomBlock())
+		{
+			CustomBlock customblock = block.getCustomBlock();
+			if(customblock.getClass() == me.bootscreen.customslabs.slabs.GlowstoneSlab.class)
+			{
+				Glowstone cgs = (Glowstone) customblock;
+				cgs.setLightLev(0);
+			}
+		}
+	}*/
 	
 	@EventHandler
 	public void onBlockPlace(BlockPlaceEvent event)
@@ -31,7 +46,7 @@ public class BlockListener implements Listener{
 				
 			if(CustomBlockAgainst.getClass() == CustomBlockPlaced.getClass())
 			{
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Bookshelf.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.BookshelfSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -39,7 +54,7 @@ public class BlockListener implements Listener{
 					event.setCancelled(true);
 				}
 				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Dirt.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.DirtSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -47,7 +62,7 @@ public class BlockListener implements Listener{
 					event.setCancelled(true);
 				}
 				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Endstone.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.EndstoneSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -55,7 +70,7 @@ public class BlockListener implements Listener{
 					event.setCancelled(true);
 				}
 				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Glas.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.GlasSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -63,7 +78,7 @@ public class BlockListener implements Listener{
 					event.setCancelled(true);
 				}
 				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Glowstone.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.GlowstoneSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -71,7 +86,7 @@ public class BlockListener implements Listener{
 					event.setCancelled(true);
 				}
 				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Gravel.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.GravelSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -79,7 +94,7 @@ public class BlockListener implements Listener{
 					event.setCancelled(true);
 				}
 				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Lapislazuli.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.LapislazuliSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -87,14 +102,14 @@ public class BlockListener implements Listener{
 					event.setCancelled(true);
 				}
 				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Log.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.LogSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
 					BlockAgainst.setType(Material.LOG);
 					event.setCancelled(true);
 				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Log1.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Log1Slab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -102,7 +117,7 @@ public class BlockListener implements Listener{
 					BlockAgainst.setData((byte) 1);
 					event.setCancelled(true);
 				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Log2.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Log2Slab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -111,7 +126,7 @@ public class BlockListener implements Listener{
 					event.setCancelled(true);
 				}
 				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Netherbrick.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.NetherbrickSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -119,7 +134,7 @@ public class BlockListener implements Listener{
 					event.setCancelled(true);
 				}
 				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Netherrack.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.NetherrackSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -127,7 +142,7 @@ public class BlockListener implements Listener{
 					event.setCancelled(true);
 				}
 				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Obsidian.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.ObsidianSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -135,7 +150,7 @@ public class BlockListener implements Listener{
 					event.setCancelled(true);
 				}
 				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Sand.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.SandSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -143,7 +158,7 @@ public class BlockListener implements Listener{
 					event.setCancelled(true);
 				}
 				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Soulsand.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.SoulsandSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -151,7 +166,7 @@ public class BlockListener implements Listener{
 					event.setCancelled(true);
 				}
 				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Stone.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.StoneSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -159,7 +174,7 @@ public class BlockListener implements Listener{
 					event.setCancelled(true);
 				}
 
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_black.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_blackSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -167,7 +182,7 @@ public class BlockListener implements Listener{
 					BlockAgainst.setData((byte) 15);
 					event.setCancelled(true);
 				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_blue.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_blueSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -175,7 +190,7 @@ public class BlockListener implements Listener{
 					BlockAgainst.setData((byte) 11);
 					event.setCancelled(true);
 				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_brown.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_brownSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -183,7 +198,7 @@ public class BlockListener implements Listener{
 					BlockAgainst.setData((byte) 12);
 					event.setCancelled(true);
 				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_cyan.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_cyanSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -191,7 +206,7 @@ public class BlockListener implements Listener{
 					BlockAgainst.setData((byte) 9);
 					event.setCancelled(true);
 				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_gray.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_graySlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -199,7 +214,7 @@ public class BlockListener implements Listener{
 					BlockAgainst.setData((byte) 7);
 					event.setCancelled(true);
 				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_green.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_greenSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -207,7 +222,7 @@ public class BlockListener implements Listener{
 					BlockAgainst.setData((byte) 13);
 					event.setCancelled(true);
 				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_lightblue.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_lightblueSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -215,7 +230,7 @@ public class BlockListener implements Listener{
 					BlockAgainst.setData((byte) 3);
 					event.setCancelled(true);
 				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_lightgray.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_lightgraySlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -223,7 +238,7 @@ public class BlockListener implements Listener{
 					BlockAgainst.setData((byte) 8);
 					event.setCancelled(true);
 				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_lime.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_limeSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -231,7 +246,7 @@ public class BlockListener implements Listener{
 					BlockAgainst.setData((byte) 5);
 					event.setCancelled(true);
 				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_magenta.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_magentaSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -239,7 +254,7 @@ public class BlockListener implements Listener{
 					BlockAgainst.setData((byte) 2);
 					event.setCancelled(true);
 				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_orange.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_orangeSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -247,7 +262,7 @@ public class BlockListener implements Listener{
 					BlockAgainst.setData((byte) 1);
 					event.setCancelled(true);
 				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_pink.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_pinkSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -255,7 +270,7 @@ public class BlockListener implements Listener{
 					BlockAgainst.setData((byte) 6);
 					event.setCancelled(true);
 				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_purple.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_purpleSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -263,7 +278,7 @@ public class BlockListener implements Listener{
 					BlockAgainst.setData((byte) 10);
 					event.setCancelled(true);
 				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_red.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_redSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -271,7 +286,7 @@ public class BlockListener implements Listener{
 					BlockAgainst.setData((byte) 14);
 					event.setCancelled(true);
 				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_white.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_whiteSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -279,7 +294,7 @@ public class BlockListener implements Listener{
 					BlockAgainst.setData((byte) 0);
 					event.setCancelled(true);
 				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_yellow.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_yellowSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
