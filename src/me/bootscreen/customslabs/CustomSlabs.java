@@ -2,26 +2,22 @@ package me.bootscreen.customslabs;
 
 import java.util.logging.Logger;
 
-import org.bukkit.block.Block;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.getspout.spoutapi.SpoutManager;
-import org.getspout.spoutapi.block.SpoutBlock;
 import org.getspout.spoutapi.block.design.Texture;
 import org.getspout.spoutapi.inventory.SpoutItemStack;
 import org.getspout.spoutapi.inventory.SpoutShapedRecipe;
 import org.getspout.spoutapi.material.CustomBlock;
 import org.getspout.spoutapi.material.MaterialData;
-import org.getspout.spoutapi.player.SpoutPlayer;
 
 import me.bootscreen.customslabs.slabs.*;
 
-public class CustomSlabs extends JavaPlugin{
-	private final BlockListener blockListener = new BlockListener(this);
+public class CustomSlabs extends JavaPlugin 
+{
+	private final Events blockListener = new Events(this);
 
 	public final Logger log = Logger.getLogger("Minecraft");
 
@@ -62,7 +58,6 @@ public class CustomSlabs extends JavaPlugin{
 	public static CustomBlock Wool_whiteSlab;
 	public static CustomBlock Wool_yellowSlab;
 
-
 	public static Texture BookshelfTexture;
 	public static Texture DirtTexture;
 	public static Texture EndstoneTexture;
@@ -95,7 +90,6 @@ public class CustomSlabs extends JavaPlugin{
 	public static Texture Wool_redTexture;
 	public static Texture Wool_whiteTexture;
 	public static Texture Wool_yellowTexture;
-
 
 	@Override
 	public void onDisable() {
@@ -408,53 +402,6 @@ public class CustomSlabs extends JavaPlugin{
 
 
 		log.info("[" + plugdisc.getName() + "] Version " + plugdisc.getVersion() + " enabled.");	
-	}
-
-	/*
-	 *  Thanks to Zach Hinchy for the permission to use his SpeedCode from Pavement.
-	 */
-	@EventHandler
-	public void onPlayerMove(PlayerMoveEvent event) 
-	{
-		SpoutPlayer sp = (SpoutPlayer) event.getPlayer();
-	        
-		boolean doMultiply = false;
-
-		Block below = event.getPlayer().getWorld().getBlockAt(event.getPlayer().getLocation().getBlockX(), event.getPlayer().getLocation().getBlockY() - 1, event.getPlayer().getLocation().getBlockZ());
-		SpoutBlock sb = (SpoutBlock) below;
-	    
-	    if (sb.getCustomBlock() != null) 
-	    {
-	    	if ((sb.getCustomBlock() instanceof SoulsandSlab)) 
-	    	{
-	    		doMultiply = true;
-	    	}
-	    }
-
-	    if (!doMultiply) 
-	    {
-	    	Block at = event.getPlayer().getWorld().getBlockAt(event.getPlayer().getLocation().getBlockX(), event.getPlayer().getLocation().getBlockY(), event.getPlayer().getLocation().getBlockZ());
-	    	SpoutBlock sb2 = (SpoutBlock) at;
-
-	    	if (sb2.getCustomBlock() != null)
-	    	{
-	    		if ((sb2.getCustomBlock() instanceof SoulsandSlab))
-	    		{
-	    			doMultiply = true;
-	    		}
-	    	}
-	    }
-
-	    if (doMultiply) 
-	    {
-	    	sp.setAirSpeedMultiplier(0.7);
-	    	sp.setWalkingMultiplier(0.7);
-	    }
-	    else
-	    {
-	    	sp.setAirSpeedMultiplier(1);
-	    	sp.setWalkingMultiplier(1);
-	    }
 	}
 	     
 	public void loadConfig()

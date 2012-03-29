@@ -1,17 +1,22 @@
 package me.bootscreen.customslabs;
 
+import me.bootscreen.customslabs.slabs.SoulsandSlab;
+
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.getspout.spoutapi.block.SpoutBlock;
 import org.getspout.spoutapi.material.CustomBlock;
+import org.getspout.spoutapi.player.SpoutPlayer;
 
-public class BlockListener implements Listener{
+public class Events implements Listener{
 	
 	public CustomSlabs plugin;
-	public BlockListener(CustomSlabs instance) {
+	public Events(CustomSlabs instance) {
 	plugin = instance;
 	}
 
@@ -304,5 +309,53 @@ public class BlockListener implements Listener{
 				}
 			}
 		}
+	}
+
+
+	/*
+	 *  Thanks to Zach Hinchy for the permission to use his SpeedCode from Pavement.
+	 */
+	@EventHandler
+	public void onPlayerMove(PlayerMoveEvent event) 
+	{
+		SpoutPlayer sp = (SpoutPlayer) event.getPlayer();
+	        
+		boolean doMultiply = false;
+
+		Block below = event.getPlayer().getWorld().getBlockAt(event.getPlayer().getLocation().getBlockX(), event.getPlayer().getLocation().getBlockY() - 1, event.getPlayer().getLocation().getBlockZ());
+		SpoutBlock sb = (SpoutBlock) below;
+	    
+	    if (sb.getCustomBlock() != null) 
+	    {
+	    	if ((sb.getCustomBlock() instanceof SoulsandSlab)) 
+	    	{
+	    		doMultiply = true;
+	    	}
+	    }
+
+	    if (!doMultiply) 
+	    {
+	    	Block at = event.getPlayer().getWorld().getBlockAt(event.getPlayer().getLocation().getBlockX(), event.getPlayer().getLocation().getBlockY(), event.getPlayer().getLocation().getBlockZ());
+	    	SpoutBlock sb2 = (SpoutBlock) at;
+
+	    	if (sb2.getCustomBlock() != null)
+	    	{
+	    		if ((sb2.getCustomBlock() instanceof SoulsandSlab))
+	    		{
+	    			doMultiply = true;
+	    		}
+	    	}
+	    }
+	    
+	    if (doMultiply) 
+	    {
+	    	sp.setAirSpeedMultiplier(0.5);
+	    	sp.setWalkingMultiplier(0.5);
+	    }
+	    else
+	    {
+	    	sp.setAirSpeedMultiplier(1);
+	    	sp.setWalkingMultiplier(1);
+	    }
 	}
 }
