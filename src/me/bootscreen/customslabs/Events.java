@@ -2,13 +2,16 @@ package me.bootscreen.customslabs;
 
 import me.bootscreen.customslabs.slabs.SoulsandSlab;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.inventory.ItemStack;
 import org.getspout.spoutapi.block.SpoutBlock;
 import org.getspout.spoutapi.material.CustomBlock;
 import org.getspout.spoutapi.player.SpoutPlayer;
@@ -16,31 +19,17 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 public class Events implements Listener{
 	
 	public CustomSlabs plugin;
-	public Events(CustomSlabs instance) {
-	plugin = instance;
+	public Events(CustomSlabs instance) 
+	{
+		plugin = instance;
 	}
-
-	/*@EventHandler
-	public void onBlockBreak(BlockBreakEvent event)
-	{		
-		SpoutBlock block = (SpoutBlock) event.getBlock();
-		if(block.isCustomBlock())
-		{
-			CustomBlock customblock = block.getCustomBlock();
-			if(customblock.getClass() == me.bootscreen.customslabs.slabs.GlowstoneSlab.class)
-			{
-				Glowstone cgs = (Glowstone) customblock;
-				cgs.setLightLev(0);
-			}
-		}
-	}*/
 	
 	@EventHandler
 	public void onBlockPlace(BlockPlaceEvent event)
 	{		
 		SpoutBlock BlockAgainst = (SpoutBlock) event.getBlockAgainst();
 		SpoutBlock BlockPlaced = (SpoutBlock) event.getBlockPlaced();
-
+		
 		if(BlockAgainst.isCustomBlock() && 
 		   BlockPlaced.isCustomBlock() &&
 		   BlockAgainst.getX() == BlockPlaced.getX() &&
@@ -51,6 +40,7 @@ public class Events implements Listener{
 				
 			if(CustomBlockAgainst.getClass() == CustomBlockPlaced.getClass())
 			{
+				
 				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.BookshelfSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
@@ -307,11 +297,42 @@ public class Events implements Listener{
 					BlockAgainst.setData((byte) 4);
 					event.setCancelled(true);
 				}
+				
+				if(event.isCancelled())
+				{
+					ItemStack IS = new ItemStack(event.getPlayer().getItemInHand());
+					IS.setAmount(IS.getAmount()-1);
+					event.getPlayer().setItemInHand(IS);
+				}
 			}
 		}
 	}
 
+	/*
+	 * Workaround to prevent the spawning of blocks when customblock is placed on the same customblock
+	 */
+	@EventHandler
+	public void onItemSpawn(ItemSpawnEvent event)
+	{
+		SpoutBlock Block = (SpoutBlock) event.getLocation().getBlock();		
+		Location loc = Block.getLocation();
+		loc.add(0, 1, 0);
+		SpoutBlock BlockAbove = (SpoutBlock) loc.getBlock();
 
+		if(Block.isCustomBlock() && BlockAbove.isCustomBlock())
+		{
+			CustomBlock CustomBlock = Block.getCustomBlock();
+			CustomBlock CustomBlockAbove = BlockAbove.getCustomBlock(); 
+			String[] SplitNameCustomBlock = CustomBlock.getFullName().split("\\.");
+			String[] SplitNameCustomBlockAbove = CustomBlockAbove.getFullName().split("\\.");
+
+			if(SplitNameCustomBlock[0].equals("CustomSlabs") && SplitNameCustomBlockAbove[0].equals("CustomSlabs"))
+			{
+				event.setCancelled(true);
+			}
+		}
+	}
+	
 	/*
 	 *  Thanks to Zach Hinchy for the permission to use his SpeedCode from Pavement.
 	 */
