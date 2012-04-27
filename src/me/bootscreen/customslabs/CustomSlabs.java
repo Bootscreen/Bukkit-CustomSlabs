@@ -21,11 +21,14 @@ public class CustomSlabs extends JavaPlugin
 
 	public final Logger log = Logger.getLogger("Minecraft");
 
-	FileConfiguration config = null;
+	public FileConfiguration config = null;
 
 	PluginDescriptionFile plugdisc;
 
+	public static CustomBlock BedrockSlab;
 	public static CustomBlock BookshelfSlab;
+	public static CustomBlock ClaySlab;
+	public static CustomBlock CrackedStoneBrickSlab;
 	public static CustomBlock DirtSlab;
 	public static CustomBlock EndstoneSlab;
 	public static CustomBlock GlasSlab;
@@ -35,9 +38,15 @@ public class CustomSlabs extends JavaPlugin
 	public static CustomBlock LogSlab;
 	public static CustomBlock Log1Slab;
 	public static CustomBlock Log2Slab;
+	public static CustomBlock Log3Slab;
+	public static CustomBlock MossStoneSlab;
+	public static CustomBlock MossyStoneBrickSlab;
 	public static CustomBlock NetherbrickSlab;
 	public static CustomBlock NetherrackSlab;
 	public static CustomBlock ObsidianSlab;
+	public static CustomBlock Planks_birchSlab;
+	public static CustomBlock Planks_jungleSlab;
+	public static CustomBlock Planks_spruceSlab;
 	public static CustomBlock SandSlab;
 	public static CustomBlock SoulsandSlab;
 	public static CustomBlock StoneSlab;
@@ -58,7 +67,10 @@ public class CustomSlabs extends JavaPlugin
 	public static CustomBlock Wool_whiteSlab;
 	public static CustomBlock Wool_yellowSlab;
 
+	public static Texture BedrockTexture;
 	public static Texture BookshelfTexture;
+	public static Texture ClayTexture;
+	public static Texture CrackedStoneBrickTexture;
 	public static Texture DirtTexture;
 	public static Texture EndstoneTexture;
 	public static Texture GlasTexture;
@@ -68,9 +80,15 @@ public class CustomSlabs extends JavaPlugin
 	public static Texture LogTexture;
 	public static Texture Log1Texture;
 	public static Texture Log2Texture;
+	public static Texture Log3Texture;
+	public static Texture MossStoneTexture;
+	public static Texture MossyStoneBrickTexture;
 	public static Texture NetherbrickTexture;
 	public static Texture NetherrackTexture;
 	public static Texture ObsidianTexture;
+	public static Texture Planks_birchTexture;
+	public static Texture Planks_jungleTexture;
+	public static Texture Planks_spruceTexture;
 	public static Texture SandTexture;
 	public static Texture SoulsandTexture;
 	public static Texture StoneTexture;
@@ -106,6 +124,15 @@ public class CustomSlabs extends JavaPlugin
 		config = this.getConfig();
 		loadConfig();
 
+		if(!config.getBoolean("bedrock.disabled",false))
+		{
+			BedrockTexture = new Texture(this,config.getString("bedrock.url","http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/bedrock.png"),config.getInt("bedrock.size",16) * 2, config.getInt("bedrock.size",16), config.getInt("bedrock.size",16));
+			BedrockSlab = new BedrockSlab (this, BedrockTexture);
+			SpoutShapedRecipe BedrockRecipe = new SpoutShapedRecipe(new SpoutItemStack(BedrockSlab, 6));
+			BedrockRecipe.shape(new String[] { "AAA" });
+			BedrockRecipe.setIngredient('A', MaterialData.bedrock);
+			SpoutManager.getMaterialManager().registerSpoutRecipe(BedrockRecipe);
+		}
 		if(!config.getBoolean("bookshelf.disabled",false))
 		{
 			BookshelfTexture = new Texture(this,config.getString("bookshelf.url","http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/bookshelf.png"),config.getInt("bookshelf.size",16) * 2, config.getInt("bookshelf.size",16), config.getInt("bookshelf.size",16));
@@ -114,6 +141,15 @@ public class CustomSlabs extends JavaPlugin
 			BookshelfRecipe.shape(new String[] { "AAA" });
 			BookshelfRecipe.setIngredient('A', MaterialData.bookshelf);
 			SpoutManager.getMaterialManager().registerSpoutRecipe(BookshelfRecipe);
+		}
+		if(!config.getBoolean("clay.disabled",false))
+		{
+			ClayTexture = new Texture(this,config.getString("clay.url","http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/clay.png"),config.getInt("clay.size",16) * 2, config.getInt("clay.size",16) , config.getInt("clay.size",16));
+			ClaySlab = new ClaySlab (this, ClayTexture);
+			SpoutShapedRecipe ClayRecipe = new SpoutShapedRecipe(new SpoutItemStack(ClaySlab, 6));
+			ClayRecipe.shape(new String[] { "AAA" });
+			ClayRecipe.setIngredient('A', MaterialData.clay);
+			SpoutManager.getMaterialManager().registerSpoutRecipe(ClayRecipe);
 		}
 		if(!config.getBoolean("dirt.disabled",false))
 		{
@@ -181,7 +217,7 @@ public class CustomSlabs extends JavaPlugin
 		if(!config.getBoolean("log1.disabled",false))
 		{
 			Log1Texture = new Texture(this,config.getString("log1.url","http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/log1.png"),config.getInt("log1.size",16) * 2, config.getInt("log1.size",16), config.getInt("log1.size",16));
-			Log1Slab = new Log1Slab (this, Log1Texture);
+			Log1Slab = new Log_spruceSlab (this, Log1Texture);
 			SpoutShapedRecipe Log1Recipe = new SpoutShapedRecipe(new SpoutItemStack(Log1Slab, 6));
 			Log1Recipe.shape(new String[] { "AAA" });
 			Log1Recipe.setIngredient('A', MaterialData.spruceLog);
@@ -190,11 +226,29 @@ public class CustomSlabs extends JavaPlugin
 		if(!config.getBoolean("log2.disabled",false))
 		{
 			Log2Texture = new Texture(this,config.getString("log2.url","http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/log2.png"),config.getInt("log2.size",16) * 2, config.getInt("log2.size",16), config.getInt("log2.size",16));
-			Log2Slab = new Log2Slab (this, Log2Texture);
+			Log2Slab = new Log_birchSlab (this, Log2Texture);
 			SpoutShapedRecipe Log2Recipe = new SpoutShapedRecipe(new SpoutItemStack(Log2Slab, 6));
 			Log2Recipe.shape(new String[] { "AAA" });
 			Log2Recipe.setIngredient('A', MaterialData.birchLog);
 			SpoutManager.getMaterialManager().registerSpoutRecipe(Log2Recipe);
+		}
+		if(!config.getBoolean("log3.disabled",false))
+		{
+			Log3Texture = new Texture(this,config.getString("log3.url","http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/log3.png"),config.getInt("log3.size",16) * 2, config.getInt("log3.size",16), config.getInt("log3.size",16));
+			Log3Slab = new Log_jungleSlab (this, Log3Texture);
+			SpoutShapedRecipe Log3Recipe = new SpoutShapedRecipe(new SpoutItemStack(Log3Slab, 6));
+			Log3Recipe.shape(new String[] { "AAA" });
+			Log3Recipe.setIngredient('A', MaterialData.jungleLog);
+			SpoutManager.getMaterialManager().registerSpoutRecipe(Log3Recipe);
+		}
+		if(!config.getBoolean("mossstone.disabled",false))
+		{
+			MossStoneTexture = new Texture(this,config.getString("mossstone.url","http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/mossstone.png"),config.getInt("mossstone.size",16) * 2, config.getInt("mossstone.size",16), config.getInt("mossstone.size",16));
+			MossStoneSlab = new MossStoneSlab (this, MossStoneTexture);
+			SpoutShapedRecipe MossStoneRecipe = new SpoutShapedRecipe(new SpoutItemStack(MossStoneSlab, 6));
+			MossStoneRecipe.shape(new String[] { "AAA" });
+			MossStoneRecipe.setIngredient('A', MaterialData.mossStone);
+			SpoutManager.getMaterialManager().registerSpoutRecipe(MossStoneRecipe);
 		}
 		if(!config.getBoolean("netherbrick.disabled",false))
 		{
@@ -223,6 +277,33 @@ public class CustomSlabs extends JavaPlugin
 			ObsidianRecipe.setIngredient('A', MaterialData.obsidian);
 			SpoutManager.getMaterialManager().registerSpoutRecipe(ObsidianRecipe);
 		}
+		if(!config.getBoolean("planks.birch.disabled",false))
+		{
+			Planks_birchTexture = new Texture(this,config.getString("planks.birch.url","http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/planks_birch.png"),config.getInt("planks.birch.size",16) * 2, config.getInt("planks.birch.size",16), config.getInt("planks.birch.size",16));
+			Planks_birchSlab = new Planks_birchSlab (this, Planks_birchTexture);
+			SpoutShapedRecipe Planks_birchRecipe = new SpoutShapedRecipe(new SpoutItemStack(Planks_birchSlab, 6));
+			Planks_birchRecipe.shape(new String[] { "AAA" });
+			Planks_birchRecipe.setIngredient('A', MaterialData.getMaterial(5, (short) 2));
+			SpoutManager.getMaterialManager().registerSpoutRecipe(Planks_birchRecipe);
+		}
+		if(!config.getBoolean("planks.jungle.disabled",false))
+		{
+			Planks_jungleTexture = new Texture(this,config.getString("planks.jungle.url","http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/planks_jungle.png"),config.getInt("planks.jungle.size",16) * 2, config.getInt("planks.jungle.size",16), config.getInt("planks.jungle.size",16));
+			Planks_jungleSlab = new Planks_jungleSlab (this, Planks_jungleTexture);
+			SpoutShapedRecipe Planks_jungleRecipe = new SpoutShapedRecipe(new SpoutItemStack(Planks_birchSlab, 6));
+			Planks_jungleRecipe.shape(new String[] { "AAA" });
+			Planks_jungleRecipe.setIngredient('A', MaterialData.getMaterial(5, (short) 3));
+			SpoutManager.getMaterialManager().registerSpoutRecipe(Planks_jungleRecipe);
+		}
+		if(!config.getBoolean("planks.spruce.disabled",false))
+		{
+			Planks_spruceTexture = new Texture(this,config.getString("planks.spruce.url","http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/planks_spruce.png"),config.getInt("planks.spruce.size",16) * 2, config.getInt("planks.spruce.size",16), config.getInt("planks.spruce.size",16));
+			Planks_spruceSlab = new Planks_spruceSlab (this, Planks_spruceTexture);
+			SpoutShapedRecipe Planks_spruceRecipe = new SpoutShapedRecipe(new SpoutItemStack(Planks_spruceSlab, 6));
+			Planks_spruceRecipe.shape(new String[] { "AAA" });
+			Planks_spruceRecipe.setIngredient('A', MaterialData.getMaterial(5, (short) 1));
+			SpoutManager.getMaterialManager().registerSpoutRecipe(Planks_spruceRecipe);
+		}
 		if(!config.getBoolean("sand.disabled",false))
 		{
 			SandTexture = new Texture(this,config.getString("sand.url","http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/sand.png"),config.getInt("sand.size",16) * 2, config.getInt("sand.size",16), config.getInt("sand.size",16));
@@ -240,6 +321,24 @@ public class CustomSlabs extends JavaPlugin
 			SoulsandRecipe.shape(new String[] { "AAA" });
 			SoulsandRecipe.setIngredient('A', MaterialData.soulSand);
 			SpoutManager.getMaterialManager().registerSpoutRecipe(SoulsandRecipe);
+		}
+		if(!config.getBoolean("stonebrick.cracked.disabled",false))
+		{
+			CrackedStoneBrickTexture = new Texture(this,config.getString("stonebrick.cracked.url","http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/crackedstonebrick.png"),config.getInt("stonebrick.cracked.size",16) * 2, config.getInt("stonebrick.cracked.size",16) , config.getInt("stonebrick.cracked.size",16));
+			CrackedStoneBrickSlab = new CrackedStoneBrickSlab (this, CrackedStoneBrickTexture);
+			SpoutShapedRecipe CrackedStoneBrickRecipe = new SpoutShapedRecipe(new SpoutItemStack(CrackedStoneBrickSlab, 6));
+			CrackedStoneBrickRecipe.shape(new String[] { "AAA" });
+			CrackedStoneBrickRecipe.setIngredient('A', MaterialData.crackedStoneBricks);
+			SpoutManager.getMaterialManager().registerSpoutRecipe(CrackedStoneBrickRecipe);
+		}
+		if(!config.getBoolean("stonebrick.mossy.disabled",false))
+		{
+			MossyStoneBrickTexture = new Texture(this,config.getString("stonebrick.mossy.url","http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/mossystonebrick.png"),config.getInt("stonebrick.mossy.size",16) * 2, config.getInt("stonebrick.mossy.size",16) , config.getInt("stonebrick.mossys.size",16));
+			MossyStoneBrickSlab = new MossyStoneBrickSlab (this, MossyStoneBrickTexture);
+			SpoutShapedRecipe MossyStoneBrickRecipe = new SpoutShapedRecipe(new SpoutItemStack(MossyStoneBrickSlab, 6));
+			MossyStoneBrickRecipe.shape(new String[] { "AAA" });
+			MossyStoneBrickRecipe.setIngredient('A', MaterialData.mossyStoneBricks);
+			SpoutManager.getMaterialManager().registerSpoutRecipe(MossyStoneBrickRecipe);
 		}
 		if(!config.getBoolean("clean_stone.disabled",false))
 		{
@@ -406,102 +505,170 @@ public class CustomSlabs extends JavaPlugin
 	     
 	public void loadConfig()
 	{
+		config.addDefault("bedrock.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/bedrock.png");
+		config.addDefault("bedrock.size",16);
+		config.addDefault("bedrock.disabled",false);
+		config.addDefault("bedrock.name","Bedrock Slab");
 		config.addDefault("bookshelf.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/bookshelf.png");
 		config.addDefault("bookshelf.size",16);
 		config.addDefault("bookshelf.disabled",false);
+		config.addDefault("bookshelf.name","Bookshelf Slab");
+		config.addDefault("clay.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/clay.png");
+		config.addDefault("clay.size",16);
+		config.addDefault("clay.disabled",false);
+		config.addDefault("clay.name","Clay Slab");
 		config.addDefault("dirt.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/dirt.png");
 		config.addDefault("dirt.size",16);
 		config.addDefault("dirt.disabled",false);
+		config.addDefault("dirt.name","Dirt Slab");
 		config.addDefault("endstone.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/endstone.png");
 		config.addDefault("endstone.size",16);
 		config.addDefault("endstone.disabled",false);
+		config.addDefault("endstone.name","End Stone Slab");
 		config.addDefault("glas.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/glas.png");
 		config.addDefault("glas.size",16);
 		config.addDefault("glas.disabled",false);
+		config.addDefault("glas.name","Glass Slab");
 		config.addDefault("glowstone.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/glowstone.png");
 		config.addDefault("glowstone.size",16);
 		config.addDefault("glowstone.disabled",false);
+		config.addDefault("glowstone.name","Glowstone Slab");
 		config.addDefault("gravel.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/gravel.png");
 		config.addDefault("gravel.size",16);
 		config.addDefault("gravel.disabled",false);
+		config.addDefault("gravel.name","Gravel Slab");
 		config.addDefault("lapislazuli.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/lapislazuli.png");
 		config.addDefault("lapislazuli.size",16);
 		config.addDefault("lapislazuli.disabled",false);
+		config.addDefault("lapislazuli.name","Lapis Lazuli Slab");
 		config.addDefault("log.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/log.png");
 		config.addDefault("log.size",16);
 		config.addDefault("log.disabled",false);
+		config.addDefault("log.name","Log Slab");
 		config.addDefault("log1.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/log1.png");
 		config.addDefault("log1.size",16);
 		config.addDefault("log1.disabled",false);
+		config.addDefault("log1.name","Spruce Log Slab");
 		config.addDefault("log2.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/log2.png");
 		config.addDefault("log2.size",16);
 		config.addDefault("log2.disabled",false);
+		config.addDefault("log2.name","Birch Log Slab");
+		config.addDefault("log3.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/log3.png");
+		config.addDefault("log3.size",16);
+		config.addDefault("log3.disabled",false);
+		config.addDefault("log3.name","Jungle Log Slab");
+		config.addDefault("mossstone.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/mossstone.png");
+		config.addDefault("mossstone.size",16);
+		config.addDefault("mossstone.disabled",false);
+		config.addDefault("mossstone.name","Moss Stone Slab");
 		config.addDefault("netherbrick.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/netherbrick.png");
 		config.addDefault("netherbrick.size",16);
 		config.addDefault("netherbrick.disabled",false);
+		config.addDefault("netherbrick.name","Nether Brick Slab");
 		config.addDefault("netherrack.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/netherrack.png");
 		config.addDefault("netherrack.size",16);
 		config.addDefault("netherrack.disabled",false);
+		config.addDefault("netherrack.name","Netherrack Slab");
 		config.addDefault("obsidian.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/obsidian.png");
 		config.addDefault("obsidian.size",16);
 		config.addDefault("obsidian.disabled",false);
+		config.addDefault("obsidian.name","Obsidian Slab");
+		config.addDefault("planks.birch.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/planks_birch.png");
+		config.addDefault("planks.birch.size",16);
+		config.addDefault("planks.birch.disabled",false);
+		config.addDefault("planks.birch.name","Birch Wood Planks Slab");
+		config.addDefault("planks.jungle.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/planks_jungle.png");
+		config.addDefault("planks.jungle.size",16);
+		config.addDefault("planks.jungle.disabled",false);
+		config.addDefault("planks.jungle.name","Jungle Wood Planks Slab");
+		config.addDefault("planks.spruce.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/planks_spruce.png");
+		config.addDefault("planks.spruce.size",16);
+		config.addDefault("planks.spruce.disabled",false);
+		config.addDefault("planks.spruce.name","Spruce Wood Planks Slab");
 		config.addDefault("sand.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/sand.png");
 		config.addDefault("sand.size",16);
 		config.addDefault("sand.disabled",false);
+		config.addDefault("sand.name","Sand Slab");
 		config.addDefault("soulsand.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/soulsand.png");
 		config.addDefault("soulsand.size",16);
 		config.addDefault("soulsand.disabled",false);
+		config.addDefault("soulsand.name","Soul Sand Slab");
+		config.addDefault("stonebrick.cracked.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/crackedstonebrick.png");
+		config.addDefault("stonebrick.cracked.size",16);
+		config.addDefault("stonebrick.cracked.disabled",false);
+		config.addDefault("stonebrick.cracked.name","Cracked Stone Brick Slab");
+		config.addDefault("stonebrick.mossy.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/mossystonebrick.png");
+		config.addDefault("stonebrick.mossy.size",16);
+		config.addDefault("stonebrick.mossy.disabled",false);
+		config.addDefault("stonebrick.mossy.name","Mossy Stone Brick Slab");
 		config.addDefault("clean_stone.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/stone.png");
 		config.addDefault("clean_stone.size",16);
 		config.addDefault("clean_stone.disabled",false);
+		config.addDefault("clean_stone.name","Clean Stone Slab");
 		config.addDefault("wool.black.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/wool_black.png");
 		config.addDefault("wool.black.size",16);
 		config.addDefault("wool.black.disabled",false);
+		config.addDefault("wool.black.name","Black Wool Slab");
 		config.addDefault("wool.blue.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/wool_blue.png");
 		config.addDefault("wool.blue.size",16);
 		config.addDefault("wool.blue.disabled",false);
+		config.addDefault("wool.blue.name","Blue Wool Slab");
 		config.addDefault("wool.brown.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/wool_brown.png");
 		config.addDefault("wool.brown.size",16);
 		config.addDefault("wool.brown.disabled",false);
+		config.addDefault("wool.brown.name","Brown Wool Slab");
 		config.addDefault("wool.cyan.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/wool_cyan.png");
 		config.addDefault("wool.cyan.size",16);
 		config.addDefault("wool.cyan.disabled",false);
+		config.addDefault("wool.cyan.name","Cyan Wool Slab");
 		config.addDefault("wool.gray.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/wool_gray.png");
 		config.addDefault("wool.gray.size",16);
 		config.addDefault("wool.gray.disabled",false);
+		config.addDefault("wool.gray.name","Grey Wool Slab");
 		config.addDefault("wool.green.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/wool_green.png");
 		config.addDefault("wool.green.size",16);
 		config.addDefault("wool.green.disabled",false);
+		config.addDefault("wool.green","Dark Green Slab");
 		config.addDefault("wool.lightblue.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/wool_lightblue.png");
 		config.addDefault("wool.lightblue.size",16);
 		config.addDefault("wool.lightblue.disabled",false);
+		config.addDefault("wool.lightblue","Light Blue Wool Slab");
 		config.addDefault("wool.lightgray.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/wool_lightgray.png");
 		config.addDefault("wool.lightgray.size",16);
 		config.addDefault("wool.lightgray.disabled",false);
+		config.addDefault("wool.lightgray","Light Grey Wool Slab");
 		config.addDefault("wool.lime.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/wool_lime.png");
 		config.addDefault("wool.lime.size",16);
 		config.addDefault("wool.lime.disabled",false);
+		config.addDefault("wool.lime.name","Light Green Wool Slab");
 		config.addDefault("wool.magenta.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/wool_magenta.png");
 		config.addDefault("wool.magenta.size",16);
 		config.addDefault("wool.magenta.disabled",false);
+		config.addDefault("wool.magenta.name","Magenta Wool Slab");
 		config.addDefault("wool.orange.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/wool_orange.png");
 		config.addDefault("wool.orange.size",16);
 		config.addDefault("wool.orange.disabled",false);
+		config.addDefault("wool.orange.name","Orange Wool Slab");
 		config.addDefault("wool.pink.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/wool_pink.png");
 		config.addDefault("wool.pink.size",16);
 		config.addDefault("wool.pink.disabled",false);
+		config.addDefault("wool.pink.name","Pink Wool Slab");
 		config.addDefault("wool.purple.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/wool_purple.png");
 		config.addDefault("wool.purple.size",16);
 		config.addDefault("wool.purple.disabled",false);
+		config.addDefault("wool.purple.name","Purple Wool Slab");
 		config.addDefault("wool.red.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/wool_red.png");
 		config.addDefault("wool.red.size",16);
 		config.addDefault("wool.red.disabled",false);
+		config.addDefault("wool.red.name","Red Wool Slab");
 		config.addDefault("wool.white.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/wool_white.png");
 		config.addDefault("wool.white.size",16);
 		config.addDefault("wool.white.disabled",false);
+		config.addDefault("wool.white.name","White Wool Slab");
 		config.addDefault("wool.yellow.url", "http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/wool_yellow.png");
 		config.addDefault("wool.yellow.size",16);
 		config.addDefault("wool.yellow.disabled",false);
+		config.addDefault("wool.yellow.name","Yellow Woll Slab");
 		config.options().copyDefaults(true);
 		saveConfig();
 	}

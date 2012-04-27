@@ -11,8 +11,10 @@ public class StoneSlab extends GenericCuboidCustomBlock
 	
     public StoneSlab(Plugin plugin, Texture texture)
     {
-        super(plugin, "Clean Stone Slab", 44, new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
-        //setBlockDesign(getBlockDesign().setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
+        super(plugin, plugin.getConfig().getString("clean_stone.name", "Clean Stone Slab"), 44, new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
         this.setStepSound(MaterialData.stone.getStepSound());
+        this.setHardness(MaterialData.stone.getHardness());
+        this.setFriction(MaterialData.stone.getFriction());
+        this.setLightLevel(MaterialData.stone.getLightLevel());
     }
 }

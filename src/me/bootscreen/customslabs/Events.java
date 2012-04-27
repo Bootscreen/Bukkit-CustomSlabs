@@ -2,6 +2,7 @@ package me.bootscreen.customslabs;
 
 import me.bootscreen.customslabs.slabs.SoulsandSlab;
 
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -29,23 +30,49 @@ public class Events implements Listener{
 	{		
 		SpoutBlock BlockAgainst = (SpoutBlock) event.getBlockAgainst();
 		SpoutBlock BlockPlaced = (SpoutBlock) event.getBlockPlaced();
+
+		CustomBlock CustomBlockAgainst = BlockAgainst.getCustomBlock();
+		CustomBlock CustomBlockPlaced = BlockPlaced.getCustomBlock(); 
 		
-		if(BlockAgainst.isCustomBlock() && 
-		   BlockPlaced.isCustomBlock() &&
+		if(CustomBlockAgainst != null && 
+		   CustomBlockPlaced != null &&
 		   BlockAgainst.getX() == BlockPlaced.getX() &&
 		   BlockAgainst.getZ() == BlockPlaced.getZ())
 		{
-			CustomBlock CustomBlockAgainst = BlockAgainst.getCustomBlock();
-			CustomBlock CustomBlockPlaced = BlockPlaced.getCustomBlock(); 
 				
 			if(CustomBlockAgainst.getClass() == CustomBlockPlaced.getClass())
 			{
+				
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.BedrockSlab.class)
+				{
+					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
+					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
+					BlockAgainst.setType(Material.BEDROCK);
+					event.setCancelled(true);
+				}
 				
 				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.BookshelfSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
 					BlockAgainst.setType(Material.BOOKSHELF);
+					event.setCancelled(true);
+				}
+				
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.ClaySlab.class)
+				{
+					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
+					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
+					BlockAgainst.setType(Material.CLAY);
+					event.setCancelled(true);
+				}
+				
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.CrackedStoneBrickSlab.class)
+				{
+					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
+					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
+					BlockAgainst.setTypeId(98);
+					BlockAgainst.setData((byte) 2);
 					event.setCancelled(true);
 				}
 				
@@ -104,7 +131,7 @@ public class Events implements Listener{
 					BlockAgainst.setType(Material.LOG);
 					event.setCancelled(true);
 				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Log1Slab.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Log_spruceSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
@@ -112,12 +139,37 @@ public class Events implements Listener{
 					BlockAgainst.setData((byte) 1);
 					event.setCancelled(true);
 				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Log2Slab.class)
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Log_birchSlab.class)
 				{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
 					BlockAgainst.setType(Material.LOG);
 					BlockAgainst.setData((byte) 2);
+					event.setCancelled(true);
+				}
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Log_jungleSlab.class)
+				{
+					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
+					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
+					BlockAgainst.setType(Material.LOG);
+					BlockAgainst.setData((byte) 3);
+					event.setCancelled(true);
+				}
+				
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.MossStoneSlab.class)
+				{
+					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
+					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
+					BlockAgainst.setType(Material.MOSSY_COBBLESTONE);
+					event.setCancelled(true);
+				}
+				
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.MossyStoneBrickSlab.class)
+				{
+					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
+					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
+					BlockAgainst.setTypeId(98);
+					BlockAgainst.setData((byte) 1);
 					event.setCancelled(true);
 				}
 				
@@ -142,6 +194,33 @@ public class Events implements Listener{
 					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
 					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
 					BlockAgainst.setType(Material.OBSIDIAN);
+					event.setCancelled(true);
+				}
+				
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Planks_birchSlab.class)
+				{
+					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
+					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
+					BlockAgainst.setType(Material.WOOD);
+					BlockAgainst.setData((byte) 2);
+					event.setCancelled(true);
+				}
+				
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Planks_jungleSlab.class)
+				{
+					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
+					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
+					BlockAgainst.setType(Material.WOOD);
+					BlockAgainst.setData((byte) 3);
+					event.setCancelled(true);
+				}
+				
+				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Planks_spruceSlab.class)
+				{
+					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
+					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
+					BlockAgainst.setType(Material.WOOD);
+					BlockAgainst.setData((byte) 1);
 					event.setCancelled(true);
 				}
 				
@@ -298,7 +377,7 @@ public class Events implements Listener{
 					event.setCancelled(true);
 				}
 				
-				if(event.isCancelled())
+				if(event.isCancelled() && event.getPlayer().getGameMode() == GameMode.SURVIVAL)
 				{
 					ItemStack IS = new ItemStack(event.getPlayer().getItemInHand());
 					IS.setAmount(IS.getAmount()-1);
@@ -319,10 +398,11 @@ public class Events implements Listener{
 		loc.add(0, 1, 0);
 		SpoutBlock BlockAbove = (SpoutBlock) loc.getBlock();
 
-		if(Block.isCustomBlock() && BlockAbove.isCustomBlock())
+		CustomBlock CustomBlock = Block.getCustomBlock();
+		CustomBlock CustomBlockAbove = BlockAbove.getCustomBlock(); 
+		
+		if(CustomBlock != null && CustomBlockAbove != null)
 		{
-			CustomBlock CustomBlock = Block.getCustomBlock();
-			CustomBlock CustomBlockAbove = BlockAbove.getCustomBlock(); 
 			String[] SplitNameCustomBlock = CustomBlock.getFullName().split("\\.");
 			String[] SplitNameCustomBlockAbove = CustomBlockAbove.getFullName().split("\\.");
 

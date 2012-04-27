@@ -11,8 +11,10 @@ public class NetherbrickSlab extends GenericCuboidCustomBlock
 	
     public NetherbrickSlab(Plugin plugin, Texture texture)
     {
-        super(plugin, "Netherbrick Slab", 44, new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
-        //setBlockDesign(getBlockDesign().setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
+        super(plugin, plugin.getConfig().getString("netherbrick.name", "Nether Brick Slab"), 44, new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
         this.setStepSound(MaterialData.netherBrick.getStepSound());
+        this.setHardness(MaterialData.netherBrick.getHardness());
+        this.setFriction(MaterialData.netherBrick.getFriction());
+        this.setLightLevel(MaterialData.netherBrick.getLightLevel());
     }
 }

@@ -7,17 +7,13 @@ import org.getspout.spoutapi.material.MaterialData;
 import org.getspout.spoutapi.material.block.GenericCuboidCustomBlock;
 
 public class GlowstoneSlab extends GenericCuboidCustomBlock
-{
-	public void setLightLev(int lightlevel)
-	{
-        setLightLevel(lightlevel);
-	}
-	
+{	
     public GlowstoneSlab(Plugin plugin, Texture texture)
     {
-        super(plugin, "GlowStone Slab", 44, new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
-        //setBlockDesign(getBlockDesign().setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
+        super(plugin, plugin.getConfig().getString("glowstone.name", "Glowstone Slab"), 44, new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
         this.setStepSound(MaterialData.glowstoneBlock.getStepSound());
-        setLightLevel(15);
+        this.setHardness(MaterialData.glowstoneBlock.getHardness());
+        this.setFriction(MaterialData.glowstoneBlock.getFriction());
+        this.setLightLevel(MaterialData.glowstoneBlock.getLightLevel());
     }
 }

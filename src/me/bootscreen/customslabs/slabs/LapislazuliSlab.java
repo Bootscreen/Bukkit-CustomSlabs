@@ -11,8 +11,10 @@ public class LapislazuliSlab extends GenericCuboidCustomBlock
 	
     public LapislazuliSlab(Plugin plugin, Texture texture)
     {
-        super(plugin, "Lapislazuli Slab", 44, new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
-        //setBlockDesign(getBlockDesign().setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
+        super(plugin, plugin.getConfig().getString("lapislazuli.name", "Lapis Lazuli Slab"), 44, new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
         this.setStepSound(MaterialData.lapisBlock.getStepSound());
+        this.setHardness(MaterialData.lapisBlock.getHardness());
+        this.setFriction(MaterialData.lapisBlock.getFriction());
+        this.setLightLevel(MaterialData.lapisBlock.getLightLevel());
     }
 }
