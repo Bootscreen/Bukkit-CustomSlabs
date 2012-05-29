@@ -1,11 +1,12 @@
 package me.bootscreen.customslabs;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import me.bootscreen.customslabs.slabs.SoulsandSlab;
 
 import org.bukkit.GameMode;
 import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -14,17 +15,19 @@ import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.getspout.spoutapi.block.SpoutBlock;
+import org.getspout.spoutapi.material.Block;
 import org.getspout.spoutapi.material.CustomBlock;
+import org.getspout.spoutapi.material.MaterialData;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 public class Events implements Listener{
-	
+
 	public CustomSlabs plugin;
 	public Events(CustomSlabs instance) 
 	{
 		plugin = instance;
 	}
-	
+
 	@EventHandler
 	public void onBlockPlace(BlockPlaceEvent event)
 	{		
@@ -33,355 +36,126 @@ public class Events implements Listener{
 
 		CustomBlock CustomBlockAgainst = BlockAgainst.getCustomBlock();
 		CustomBlock CustomBlockPlaced = BlockPlaced.getCustomBlock(); 
-		
-		if(CustomBlockAgainst != null && 
-		   CustomBlockPlaced != null &&
-		   BlockAgainst.getX() == BlockPlaced.getX() &&
-		   BlockAgainst.getZ() == BlockPlaced.getZ())
-		{
-				
-			if(CustomBlockAgainst.getClass() == CustomBlockPlaced.getClass())
-			{
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.BedrockSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.BEDROCK);
-					event.setCancelled(true);
-				}
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.BookshelfSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.BOOKSHELF);
-					event.setCancelled(true);
-				}
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.ClaySlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.CLAY);
-					event.setCancelled(true);
-				}
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.CrackedStoneBrickSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setTypeId(98);
-					BlockAgainst.setData((byte) 2);
-					event.setCancelled(true);
-				}
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.DirtSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.DIRT);
-					event.setCancelled(true);
-				}
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.EndstoneSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.ENDER_STONE);
-					event.setCancelled(true);
-				}
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.GlasSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.GLASS);
-					event.setCancelled(true);
-				}
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.GlowstoneSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.GLOWSTONE);
-					event.setCancelled(true);
-				}
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.GravelSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.GRAVEL);
-					event.setCancelled(true);
-				}
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.LapislazuliSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.LAPIS_BLOCK);
-					event.setCancelled(true);
-				}
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.LogSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.LOG);
-					event.setCancelled(true);
-				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Log_spruceSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.LOG);
-					BlockAgainst.setData((byte) 1);
-					event.setCancelled(true);
-				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Log_birchSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.LOG);
-					BlockAgainst.setData((byte) 2);
-					event.setCancelled(true);
-				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Log_jungleSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.LOG);
-					BlockAgainst.setData((byte) 3);
-					event.setCancelled(true);
-				}
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.MossStoneSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.MOSSY_COBBLESTONE);
-					event.setCancelled(true);
-				}
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.MossyStoneBrickSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setTypeId(98);
-					BlockAgainst.setData((byte) 1);
-					event.setCancelled(true);
-				}
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.NetherbrickSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.NETHER_BRICK);
-					event.setCancelled(true);
-				}
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.NetherrackSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.NETHERRACK);
-					event.setCancelled(true);
-				}
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.ObsidianSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.OBSIDIAN);
-					event.setCancelled(true);
-				}
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Planks_birchSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.WOOD);
-					BlockAgainst.setData((byte) 2);
-					event.setCancelled(true);
-				}
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Planks_jungleSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.WOOD);
-					BlockAgainst.setData((byte) 3);
-					event.setCancelled(true);
-				}
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Planks_spruceSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.WOOD);
-					BlockAgainst.setData((byte) 1);
-					event.setCancelled(true);
-				}
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.SandSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.SAND);
-					event.setCancelled(true);
-				}
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.SoulsandSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.SOUL_SAND);
-					event.setCancelled(true);
-				}
-				
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.StoneSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.STONE);
-					event.setCancelled(true);
-				}
 
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_blackSlab.class)
+		if(CustomBlockAgainst != null && 
+				CustomBlockPlaced != null)
+		{
+
+			if(BlockAgainst.getX() == BlockPlaced.getX() &&
+				(BlockAgainst.getY() == BlockPlaced.getY()-1/* || BlockAgainst.getY() == BlockPlaced.getY()+1*/) &&
+				BlockAgainst.getZ() == BlockPlaced.getZ())
+			{
+
+				if(CustomBlockAgainst.getClass() == CustomBlockPlaced.getClass())
 				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.WOOL);
-					BlockAgainst.setData((byte) 15);
-					event.setCancelled(true);
+					Map<CustomBlock, Block> Slab_TopSlab = new HashMap<CustomBlock, Block>();
+					Slab_TopSlab.put(plugin.BedrockSlab, MaterialData.bedrock);
+					Slab_TopSlab.put(plugin.BookshelfSlab, MaterialData.bookshelf);
+					Slab_TopSlab.put(plugin.ClaySlab, MaterialData.clayBlock);
+					Slab_TopSlab.put(plugin.CrackedStoneBrickSlab, MaterialData.crackedStoneBricks);
+					Slab_TopSlab.put(plugin.DirtSlab, MaterialData.dirt);
+					Slab_TopSlab.put(plugin.EndstoneSlab, MaterialData.endStone);
+					Slab_TopSlab.put(plugin.GlasSlab, MaterialData.glass);
+					Slab_TopSlab.put(plugin.GlowstoneSlab, MaterialData.glowstoneBlock);
+					Slab_TopSlab.put(plugin.GravelSlab, MaterialData.gravel);
+					Slab_TopSlab.put(plugin.LapislazuliSlab, MaterialData.lapisBlock);              
+					Slab_TopSlab.put(plugin.LogSlab, MaterialData.log);
+					Slab_TopSlab.put(plugin.Log1Slab, MaterialData.spruceLog);
+					Slab_TopSlab.put(plugin.Log2Slab, MaterialData.birchLog);
+					Slab_TopSlab.put(plugin.Log3Slab, MaterialData.jungleLog);
+					Slab_TopSlab.put(plugin.MossStoneSlab, MaterialData.mossStone);
+					Slab_TopSlab.put(plugin.MossyStoneBrickSlab, MaterialData.mossyStoneBricks);
+					Slab_TopSlab.put(plugin.NetherbrickSlab, MaterialData.netherBrick);
+					Slab_TopSlab.put(plugin.NetherrackSlab, MaterialData.netherrack);
+					Slab_TopSlab.put(plugin.ObsidianSlab, MaterialData.obsidian);
+					Slab_TopSlab.put(plugin.SandSlab, MaterialData.sand);
+					Slab_TopSlab.put(plugin.SoulsandSlab, MaterialData.soulSand);
+					Slab_TopSlab.put(plugin.StoneSlab, MaterialData.stone);
+					Slab_TopSlab.put(plugin.Wool_blackSlab, MaterialData.blackWool);
+					Slab_TopSlab.put(plugin.Wool_blueSlab, MaterialData.blueWool);
+					Slab_TopSlab.put(plugin.Wool_brownSlab, MaterialData.brownWool);
+					Slab_TopSlab.put(plugin.Wool_cyanSlab, MaterialData.cyanWool);
+					Slab_TopSlab.put(plugin.Wool_graySlab, MaterialData.greyWool);
+					Slab_TopSlab.put(plugin.Wool_greenSlab, MaterialData.greenWool);
+					Slab_TopSlab.put(plugin.Wool_lightblueSlab, MaterialData.lightBlueWool);
+					Slab_TopSlab.put(plugin.Wool_lightgraySlab, MaterialData.lightGreyWool);
+					Slab_TopSlab.put(plugin.Wool_limeSlab, MaterialData.limeWool);
+					Slab_TopSlab.put(plugin.Wool_magentaSlab, MaterialData.magentaWool);
+					Slab_TopSlab.put(plugin.Wool_orangeSlab, MaterialData.orangeWool);
+					Slab_TopSlab.put(plugin.Wool_pinkSlab, MaterialData.pinkWool);
+					Slab_TopSlab.put(plugin.Wool_purpleSlab, MaterialData.purpleWool);
+					Slab_TopSlab.put(plugin.Wool_redSlab, MaterialData.redWool);
+					Slab_TopSlab.put(plugin.Wool_whiteSlab, MaterialData.whiteWool);
+					Slab_TopSlab.put(plugin.Wool_yellowSlab, MaterialData.yellowWool);
+
+					if(Slab_TopSlab.containsKey(CustomBlockAgainst))
+					{
+						BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
+						plugin.getServer().getPluginManager().callEvent(blockbreakevent);
+						BlockAgainst.setTypeId(Slab_TopSlab.get(CustomBlockAgainst).getRawId());
+						BlockAgainst.setData((byte) Slab_TopSlab.get(CustomBlockAgainst).getRawData());
+						event.setCancelled(true);
+					}
+
+					if(event.isCancelled() && event.getPlayer().getGameMode() == GameMode.SURVIVAL)
+					{
+						ItemStack IS = new ItemStack(event.getPlayer().getItemInHand());
+						IS.setAmount(IS.getAmount()-1);
+						event.getPlayer().setItemInHand(IS);
+					}
 				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_blueSlab.class)
+			}
+		}
+		
+		if(CustomBlockPlaced != null)
+		{
+			if(BlockAgainst.getY() == BlockPlaced.getY()+1)
+			{
+				Map<CustomBlock, CustomBlock> Slab_TopSlab = new HashMap<CustomBlock, CustomBlock>();
+				Slab_TopSlab.put(plugin.BedrockSlab, plugin.BedrockTopSlab);
+				Slab_TopSlab.put(plugin.BookshelfSlab, plugin.BookshelfTopSlab);
+				Slab_TopSlab.put(plugin.ClaySlab, plugin.ClayTopSlab);
+				Slab_TopSlab.put(plugin.CrackedStoneBrickSlab, plugin.CrackedStoneBrickTopSlab);
+				Slab_TopSlab.put(plugin.DirtSlab, plugin.DirtTopSlab);
+				Slab_TopSlab.put(plugin.EndstoneSlab, plugin.EndstoneTopSlab);
+				Slab_TopSlab.put(plugin.GlasSlab, plugin.GlasTopSlab);
+				Slab_TopSlab.put(plugin.GlowstoneSlab, plugin.GlowstoneTopSlab);
+				Slab_TopSlab.put(plugin.GravelSlab, plugin.GravelTopSlab);
+				Slab_TopSlab.put(plugin.LapislazuliSlab, plugin.LapislazuliTopSlab);
+				Slab_TopSlab.put(plugin.LogSlab, plugin.LogTopSlab);
+				Slab_TopSlab.put(plugin.Log1Slab, plugin.Log1TopSlab);
+				Slab_TopSlab.put(plugin.Log2Slab, plugin.Log2TopSlab);
+				Slab_TopSlab.put(plugin.Log3Slab, plugin.Log3TopSlab);
+				Slab_TopSlab.put(plugin.MossStoneSlab, plugin.MossStoneTopSlab);
+				Slab_TopSlab.put(plugin.MossyStoneBrickSlab, plugin.MossyStoneBrickTopSlab);
+				Slab_TopSlab.put(plugin.NetherbrickSlab, plugin.NetherbrickTopSlab);
+				Slab_TopSlab.put(plugin.NetherrackSlab, plugin.NetherrackTopSlab);
+				Slab_TopSlab.put(plugin.ObsidianSlab, plugin.ObsidianTopSlab);
+				Slab_TopSlab.put(plugin.Planks_birchSlab, plugin.Planks_birchTopSlab);
+				Slab_TopSlab.put(plugin.Planks_jungleSlab, plugin.Planks_jungleTopSlab);
+				Slab_TopSlab.put(plugin.Planks_spruceSlab, plugin.Planks_spruceTopSlab);
+				Slab_TopSlab.put(plugin.SandSlab, plugin.SandTopSlab);
+				Slab_TopSlab.put(plugin.SoulsandSlab, plugin.SoulsandTopSlab);
+				Slab_TopSlab.put(plugin.StoneSlab, plugin.StoneTopSlab);
+				Slab_TopSlab.put(plugin.Wool_blackSlab, plugin.Wool_blackTopSlab);
+				Slab_TopSlab.put(plugin.Wool_blueSlab, plugin.Wool_blueTopSlab);
+				Slab_TopSlab.put(plugin.Wool_brownSlab, plugin.Wool_brownTopSlab);
+				Slab_TopSlab.put(plugin.Wool_cyanSlab, plugin.Wool_cyanTopSlab);
+				Slab_TopSlab.put(plugin.Wool_graySlab, plugin.Wool_grayTopSlab);
+				Slab_TopSlab.put(plugin.Wool_greenSlab, plugin.Wool_greenTopSlab);
+				Slab_TopSlab.put(plugin.Wool_lightblueSlab, plugin.Wool_lightblueTopSlab);
+				Slab_TopSlab.put(plugin.Wool_lightgraySlab, plugin.Wool_lightgrayTopSlab);
+				Slab_TopSlab.put(plugin.Wool_limeSlab, plugin.Wool_limeTopSlab);
+				Slab_TopSlab.put(plugin.Wool_magentaSlab, plugin.Wool_magentaTopSlab);
+				Slab_TopSlab.put(plugin.Wool_orangeSlab, plugin.Wool_orangeTopSlab);
+				Slab_TopSlab.put(plugin.Wool_pinkSlab, plugin.Wool_pinkTopSlab);
+				Slab_TopSlab.put(plugin.Wool_purpleSlab, plugin.Wool_purpleTopSlab);
+				Slab_TopSlab.put(plugin.Wool_redSlab, plugin.Wool_redTopSlab);
+				Slab_TopSlab.put(plugin.Wool_whiteSlab, plugin.Wool_whiteTopSlab);
+				Slab_TopSlab.put(plugin.Wool_yellowSlab, plugin.Wool_yellowTopSlab);
+				if(Slab_TopSlab.containsKey(CustomBlockPlaced))
 				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.WOOL);
-					BlockAgainst.setData((byte) 11);
-					event.setCancelled(true);
-				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_brownSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.WOOL);
-					BlockAgainst.setData((byte) 12);
-					event.setCancelled(true);
-				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_cyanSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.WOOL);
-					BlockAgainst.setData((byte) 9);
-					event.setCancelled(true);
-				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_graySlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.WOOL);
-					BlockAgainst.setData((byte) 7);
-					event.setCancelled(true);
-				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_greenSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.WOOL);
-					BlockAgainst.setData((byte) 13);
-					event.setCancelled(true);
-				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_lightblueSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.WOOL);
-					BlockAgainst.setData((byte) 3);
-					event.setCancelled(true);
-				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_lightgraySlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.WOOL);
-					BlockAgainst.setData((byte) 8);
-					event.setCancelled(true);
-				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_limeSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.WOOL);
-					BlockAgainst.setData((byte) 5);
-					event.setCancelled(true);
-				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_magentaSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.WOOL);
-					BlockAgainst.setData((byte) 2);
-					event.setCancelled(true);
-				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_orangeSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.WOOL);
-					BlockAgainst.setData((byte) 1);
-					event.setCancelled(true);
-				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_pinkSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.WOOL);
-					BlockAgainst.setData((byte) 6);
-					event.setCancelled(true);
-				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_purpleSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.WOOL);
-					BlockAgainst.setData((byte) 10);
-					event.setCancelled(true);
-				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_redSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.WOOL);
-					BlockAgainst.setData((byte) 14);
-					event.setCancelled(true);
-				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_whiteSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.WOOL);
-					BlockAgainst.setData((byte) 0);
-					event.setCancelled(true);
-				}
-				if(CustomBlockAgainst.getClass() == me.bootscreen.customslabs.slabs.Wool_yellowSlab.class)
-				{
-					BlockBreakEvent blockbreakevent = new BlockBreakEvent(BlockAgainst, event.getPlayer());
-					plugin.getServer().getPluginManager().callEvent(blockbreakevent);
-					BlockAgainst.setType(Material.WOOL);
-					BlockAgainst.setData((byte) 4);
-					event.setCancelled(true);
-				}
-				
-				if(event.isCancelled() && event.getPlayer().getGameMode() == GameMode.SURVIVAL)
-				{
-					ItemStack IS = new ItemStack(event.getPlayer().getItemInHand());
-					IS.setAmount(IS.getAmount()-1);
-					event.getPlayer().setItemInHand(IS);
+					BlockPlaced.setCustomBlock(Slab_TopSlab.get(CustomBlockPlaced));
 				}
 			}
 		}
@@ -400,7 +174,7 @@ public class Events implements Listener{
 
 		CustomBlock CustomBlock = Block.getCustomBlock();
 		CustomBlock CustomBlockAbove = BlockAbove.getCustomBlock(); 
-		
+
 		if(CustomBlock != null && CustomBlockAbove != null)
 		{
 			String[] SplitNameCustomBlock = CustomBlock.getFullName().split("\\.");
@@ -412,7 +186,7 @@ public class Events implements Listener{
 			}
 		}
 	}
-	
+
 	/*
 	 *  Thanks to Zach Hinchy for the permission to use his SpeedCode from Pavement.
 	 */
@@ -420,43 +194,45 @@ public class Events implements Listener{
 	public void onPlayerMove(PlayerMoveEvent event) 
 	{
 		SpoutPlayer sp = (SpoutPlayer) event.getPlayer();
-	        
+
 		boolean doMultiply = false;
 
-		Block below = event.getPlayer().getWorld().getBlockAt(event.getPlayer().getLocation().getBlockX(), event.getPlayer().getLocation().getBlockY() - 1, event.getPlayer().getLocation().getBlockZ());
+		org.bukkit.block.Block below = sp.getLocation().subtract(0, 1, 0).getBlock();
+		//Block below = event.getPlayer().getWorld().getBlockAt(event.getPlayer().getLocation().getBlockX(), event.getPlayer().getLocation().getBlockY() - 1, event.getPlayer().getLocation().getBlockZ());
 		SpoutBlock sb = (SpoutBlock) below;
-	    
-	    if (sb.getCustomBlock() != null) 
-	    {
-	    	if ((sb.getCustomBlock() instanceof SoulsandSlab)) 
-	    	{
-	    		doMultiply = true;
-	    	}
-	    }
 
-	    if (!doMultiply) 
-	    {
-	    	Block at = event.getPlayer().getWorld().getBlockAt(event.getPlayer().getLocation().getBlockX(), event.getPlayer().getLocation().getBlockY(), event.getPlayer().getLocation().getBlockZ());
-	    	SpoutBlock sb2 = (SpoutBlock) at;
+		if (sb.getCustomBlock() != null) 
+		{
+			if ((sb.getCustomBlock() instanceof SoulsandSlab)) 
+			{
+				doMultiply = true;
+			}
+		}
 
-	    	if (sb2.getCustomBlock() != null)
-	    	{
-	    		if ((sb2.getCustomBlock() instanceof SoulsandSlab))
-	    		{
-	    			doMultiply = true;
-	    		}
-	    	}
-	    }
-	    
-	    if (doMultiply) 
-	    {
-	    	sp.setAirSpeedMultiplier(0.5);
-	    	sp.setWalkingMultiplier(0.5);
-	    }
-	    else
-	    {
-	    	sp.setAirSpeedMultiplier(1);
-	    	sp.setWalkingMultiplier(1);
-	    }
+		if (!doMultiply) 
+		{
+			org.bukkit.block.Block at = sp.getLocation().getBlock();
+			//Block at = event.getPlayer().getWorld().getBlockAt(event.getPlayer().getLocation().getBlockX(), event.getPlayer().getLocation().getBlockY(), event.getPlayer().getLocation().getBlockZ());
+			SpoutBlock sb2 = (SpoutBlock) at;
+
+			if (sb2.getCustomBlock() != null)
+			{
+				if ((sb2.getCustomBlock() instanceof SoulsandSlab))
+				{
+					doMultiply = true;
+				}
+			}
+		}
+
+		if (doMultiply) 
+		{
+			sp.setAirSpeedMultiplier(0.5);
+			sp.setWalkingMultiplier(0.5);
+		}
+		else
+		{
+			sp.setAirSpeedMultiplier(1);
+			sp.setWalkingMultiplier(1);
+		}
 	}
 }
