@@ -12,7 +12,7 @@ public class SandTopSlab extends GenericCuboidCustomBlock
 {
     public SandTopSlab(CustomSlabs plugin, Texture texture)
     {
-        super(plugin, plugin.getConfig().getString("sand.name.top", "Sand TopSlab"), new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F));
+        super(plugin, plugin.getConfig().getString("sand.name.top", "Sand TopSlab"), 44, 8, new  GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F));
         this.setStepSound(MaterialData.sand.getStepSound());
         this.setHardness(MaterialData.sand.getHardness());
         this.setFriction(MaterialData.sand.getFriction());

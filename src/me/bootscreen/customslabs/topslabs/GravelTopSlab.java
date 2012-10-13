@@ -12,7 +12,7 @@ public class GravelTopSlab extends GenericCuboidCustomBlock
 {
     public GravelTopSlab(CustomSlabs plugin, Texture texture)
     {
-        super(plugin, plugin.getConfig().getString("gravel.name.top", "Gravel TopSlab"), new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F));
+        super(plugin, plugin.getConfig().getString("gravel.name.top", "Gravel TopSlab"), 44, 8, new  GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F));
         this.setStepSound(MaterialData.gravel.getStepSound());
         this.setHardness(MaterialData.gravel.getHardness());
         this.setFriction(MaterialData.gravel.getFriction());

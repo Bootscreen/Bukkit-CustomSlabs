@@ -1,8 +1,8 @@
 name: CustomSlabs
-version: 0.8
+version: 0.9
 description: implement CustomSlabs
-author: Bootscreen
-website: http://bootscreen.net
+author: Hinchy
+website: http://hinchy.us
 dev-url: http://dev.bukkit.org/server-mods/customslabs/
 depend: [Spout]
 

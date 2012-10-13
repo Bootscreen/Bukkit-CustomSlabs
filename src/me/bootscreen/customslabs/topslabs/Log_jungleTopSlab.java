@@ -12,7 +12,7 @@ public class Log_jungleTopSlab extends GenericCuboidCustomBlock
 {
     public Log_jungleTopSlab(CustomSlabs plugin, Texture texture)
     {
-        super(plugin, plugin.getConfig().getString("log3.name.top", "Jungle Log TopSlab"), new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F));
+        super(plugin, plugin.getConfig().getString("log3.name.top", "Jungle Log TopSlab"), 126, 11, new  GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F));
         this.setStepSound(MaterialData.jungleLog.getStepSound());
         this.setHardness(MaterialData.jungleLog.getHardness());
         this.setFriction(MaterialData.jungleLog.getFriction());

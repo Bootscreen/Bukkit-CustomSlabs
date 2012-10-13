@@ -12,7 +12,7 @@ public class ClayTopSlab extends GenericCuboidCustomBlock
 {
     public ClayTopSlab(CustomSlabs plugin, Texture texture)
     {
-        super(plugin, plugin.getConfig().getString("clay.name.top", "Clay TopSlab"), new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F));
+        super(plugin, plugin.getConfig().getString("clay.name.top", "Clay TopSlab"), 44, 8, new  GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F));
         this.setStepSound(MaterialData.clayBlock.getStepSound());
         this.setHardness(MaterialData.clayBlock.getHardness());
         this.setFriction(MaterialData.clayBlock.getFriction());
