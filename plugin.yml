@@ -1,9 +1,9 @@
 name: CustomSlabs
-version: 0.9
-description: implement CustomSlabs
-author: Hinchy
-website: http://hinchy.us
+version: 1.0.0
+description: Adds many more slab types to Minecraft.
+author: Bootscreen
+website: http://bootscreen.net
 dev-url: http://dev.bukkit.org/server-mods/customslabs/
 depend: [Spout]
 
-main:  me.bootscreen.customslabs.CustomSlabs
+main: me.bootscreen.customslabs.CustomSlabs
