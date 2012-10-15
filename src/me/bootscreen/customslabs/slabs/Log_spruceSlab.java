@@ -10,7 +10,7 @@ public class Log_spruceSlab extends GenericCuboidCustomBlock
 {
     public Log_spruceSlab(Plugin plugin, Texture texture)
     {
-        super(plugin, plugin.getConfig().getString("log1.name", "Spruce Wood Slab"), 126, 1, new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
+        super(plugin, plugin.getConfig().getString("log1.name.normal", "Spruce Wood Slab"), 126, 1, new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
         this.setStepSound(MaterialData.spruceLog.getStepSound());
         this.setHardness(MaterialData.spruceLog.getHardness());
         this.setFriction(MaterialData.spruceLog.getFriction());

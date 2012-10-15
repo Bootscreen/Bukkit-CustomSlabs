@@ -11,7 +11,7 @@ public class Wool_limeSlab extends GenericCuboidCustomBlock
 	
     public Wool_limeSlab(Plugin plugin, Texture texture)
     {
-        super(plugin, plugin.getConfig().getString("wool.lime.name", "Light Green Wool Slab"), 44, new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
+        super(plugin, plugin.getConfig().getString("wool.lime.name.normal", "Light Green Wool Slab"), 44, new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
         this.setStepSound(MaterialData.limeWool.getStepSound());
         this.setHardness(MaterialData.limeWool.getHardness());
         this.setFriction(MaterialData.limeWool.getFriction());

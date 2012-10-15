@@ -10,7 +10,7 @@ public class BookshelfSlab extends GenericCuboidCustomBlock
 {
     public BookshelfSlab(Plugin plugin, Texture texture)
     {
-        super(plugin, plugin.getConfig().getString("bookshelf.name", "Bookshelf Slab"), 126, new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
+        super(plugin, plugin.getConfig().getString("bookshelf.name.normal", "Bookshelf Slab"), 126, new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
         this.setStepSound(MaterialData.bookshelf.getStepSound());
         this.setHardness(MaterialData.bookshelf.getHardness());
         this.setFriction(MaterialData.bookshelf.getFriction());
