@@ -10,7 +10,7 @@ public class MossyStoneBrickSlab extends GenericCuboidCustomBlock
 {
     public MossyStoneBrickSlab(Plugin plugin, Texture texture)
     {
-        super(plugin, plugin.getConfig().getString("stonebrick.mossy.name", "Mossy Stone Brick Slab"), 44, new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
+        super(plugin, plugin.getConfig().getString("stonebrick.mossy.name.normal", "Mossy Stone Brick Slab"), 44, new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
         this.setStepSound(MaterialData.mossyStoneBricks.getStepSound());
         this.setHardness(MaterialData.mossyStoneBricks.getHardness());
         this.setFriction(MaterialData.mossyStoneBricks.getFriction());
