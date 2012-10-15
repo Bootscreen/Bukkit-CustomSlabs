@@ -13,7 +13,7 @@ public class Wool_blueTopSlab extends GenericCuboidCustomBlock
 	
     public Wool_blueTopSlab(CustomSlabs plugin, Texture texture)
     {
-        super(plugin, plugin.getConfig().getString("wool.blue.name.top", "Blue Wool TopSlab"), new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F));
+        super(plugin, plugin.getConfig().getString("wool.blue.name.top", "Blue Wool TopSlab"), 44, 8, new  GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F));
         this.setStepSound(MaterialData.blueWool.getStepSound());
         this.setHardness(MaterialData.blueWool.getHardness());
         this.setFriction(MaterialData.blueWool.getFriction());

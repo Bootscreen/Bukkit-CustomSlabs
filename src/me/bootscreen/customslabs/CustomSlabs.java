@@ -337,36 +337,6 @@ public class CustomSlabs extends JavaPlugin
 			ObsidianRecipe.setIngredient('A', MaterialData.obsidian);
 			SpoutManager.getMaterialManager().registerSpoutRecipe(ObsidianRecipe);
 		}
-		if(!config.getBoolean("planks.birch.disabled",false))
-		{
-			Planks_birchTexture = new Texture(this,config.getString("planks.birch.url","http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/planks_birch.png"),config.getInt("planks.birch.size",16) * 2, config.getInt("planks.birch.size",16), config.getInt("planks.birch.size",16));
-			Planks_birchSlab = new Planks_birchSlab (this, Planks_birchTexture);
-			Planks_birchTopSlab = new Planks_birchTopSlab (this, Planks_birchTexture);
-			SpoutShapedRecipe Planks_birchRecipe = new SpoutShapedRecipe(new SpoutItemStack(Planks_birchSlab, 6));
-			Planks_birchRecipe.shape(new String[] { "AAA" });
-			Planks_birchRecipe.setIngredient('A', MaterialData.getMaterial(5, (short) 2));
-			SpoutManager.getMaterialManager().registerSpoutRecipe(Planks_birchRecipe);
-		}
-		if(!config.getBoolean("planks.jungle.disabled",false))
-		{
-			Planks_jungleTexture = new Texture(this,config.getString("planks.jungle.url","http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/planks_jungle.png"),config.getInt("planks.jungle.size",16) * 2, config.getInt("planks.jungle.size",16), config.getInt("planks.jungle.size",16));
-			Planks_jungleSlab = new Planks_jungleSlab (this, Planks_jungleTexture);
-			Planks_jungleTopSlab = new Planks_jungleTopSlab (this, Planks_jungleTexture);
-			SpoutShapedRecipe Planks_jungleRecipe = new SpoutShapedRecipe(new SpoutItemStack(Planks_birchSlab, 6));
-			Planks_jungleRecipe.shape(new String[] { "AAA" });
-			Planks_jungleRecipe.setIngredient('A', MaterialData.getMaterial(5, (short) 3));
-			SpoutManager.getMaterialManager().registerSpoutRecipe(Planks_jungleRecipe);
-		}
-		if(!config.getBoolean("planks.spruce.disabled",false))
-		{
-			Planks_spruceTexture = new Texture(this,config.getString("planks.spruce.url","http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/planks_spruce.png"),config.getInt("planks.spruce.size",16) * 2, config.getInt("planks.spruce.size",16), config.getInt("planks.spruce.size",16));
-			Planks_spruceSlab = new Planks_spruceSlab (this, Planks_spruceTexture);
-			Planks_spruceTopSlab = new Planks_spruceTopSlab (this, Planks_spruceTexture);
-			SpoutShapedRecipe Planks_spruceRecipe = new SpoutShapedRecipe(new SpoutItemStack(Planks_spruceSlab, 6));
-			Planks_spruceRecipe.shape(new String[] { "AAA" });
-			Planks_spruceRecipe.setIngredient('A', MaterialData.getMaterial(5, (short) 1));
-			SpoutManager.getMaterialManager().registerSpoutRecipe(Planks_spruceRecipe);
-		}
 		if(!config.getBoolean("sand.disabled",false))
 		{
 			SandTexture = new Texture(this,config.getString("sand.url","http://dl.dropbox.com/u/4401431/Bukkit/CustomSlabs/sand.png"),config.getInt("sand.size",16) * 2, config.getInt("sand.size",16), config.getInt("sand.size",16));

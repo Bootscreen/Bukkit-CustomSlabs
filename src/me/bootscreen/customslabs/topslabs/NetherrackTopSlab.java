@@ -13,7 +13,7 @@ public class NetherrackTopSlab extends GenericCuboidCustomBlock
 	
     public NetherrackTopSlab(CustomSlabs plugin, Texture texture)
     {
-        super(plugin, plugin.getConfig().getString("netherrack.name.top", "Netherrack TopSlab"), new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F));
+        super(plugin, plugin.getConfig().getString("netherrack.name.top", "Netherrack TopSlab"), 44, 8, new  GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F));
         this.setStepSound(MaterialData.netherrack.getStepSound());
         this.setHardness(MaterialData.netherrack.getHardness());
         this.setFriction(MaterialData.netherrack.getFriction());

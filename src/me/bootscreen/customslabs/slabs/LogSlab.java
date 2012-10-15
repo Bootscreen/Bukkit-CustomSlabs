@@ -10,7 +10,7 @@ public class LogSlab extends GenericCuboidCustomBlock
 {
     public LogSlab(Plugin plugin, Texture texture)
     {
-        super(plugin, plugin.getConfig().getString("log.name", "Log Slab"), 44, new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
+        super(plugin, plugin.getConfig().getString("log.name", "Oak Wood Slab"), 126, 0, new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
         this.setStepSound(MaterialData.log.getStepSound());
         this.setHardness(MaterialData.log.getHardness());
         this.setFriction(MaterialData.log.getFriction());

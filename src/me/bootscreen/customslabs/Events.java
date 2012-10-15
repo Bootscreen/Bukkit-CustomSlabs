@@ -154,8 +154,15 @@ public class Events implements Listener{
 				Slab_TopSlab.put(plugin.Wool_whiteSlab, plugin.Wool_whiteTopSlab);
 				Slab_TopSlab.put(plugin.Wool_yellowSlab, plugin.Wool_yellowTopSlab);
 				if(Slab_TopSlab.containsKey(CustomBlockPlaced))
-				{
+				{					
+					//b.setTypeId(Slab_TopSlab.get(CustomBlockPlaced).getRawId());
+					
 					BlockPlaced.setCustomBlock(Slab_TopSlab.get(CustomBlockPlaced));
+
+					org.bukkit.block.Block b = (org.bukkit.block.Block) BlockPlaced;
+					
+					//BlockPlaced.setData((byte) Slab_TopSlab.get(CustomBlockPlaced).getRawData());
+					b.setData((byte) ((int) BlockPlaced.getData() + 8));
 				}
 			}
 		}

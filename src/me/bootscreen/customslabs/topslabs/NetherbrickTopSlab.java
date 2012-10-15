@@ -13,7 +13,7 @@ public class NetherbrickTopSlab extends GenericCuboidCustomBlock
 	
     public NetherbrickTopSlab(CustomSlabs plugin, Texture texture)
     {
-        super(plugin, plugin.getConfig().getString("netherbrick.name.top", "Nether Brick TopSlab"), new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F));
+        super(plugin, plugin.getConfig().getString("netherbrick.name.top", "Nether Brick TopSlab"), 44, 8, new  GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F));
         this.setStepSound(MaterialData.netherBrick.getStepSound());
         this.setHardness(MaterialData.netherBrick.getHardness());
         this.setFriction(MaterialData.netherBrick.getFriction());

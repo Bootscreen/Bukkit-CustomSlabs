@@ -13,7 +13,7 @@ public class EndstoneTopSlab extends GenericCuboidCustomBlock
 	
     public EndstoneTopSlab(CustomSlabs plugin, Texture texture)
     {
-        super(plugin, plugin.getConfig().getString("endstone.name.top", "End Stone TopSlab"), new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F));
+        super(plugin, plugin.getConfig().getString("endstone.name.top", "End Stone TopSlab"), 44, 8, new  GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F));
         this.setStepSound(MaterialData.endStone.getStepSound());
         this.setHardness(MaterialData.endStone.getHardness());
         this.setFriction(MaterialData.endStone.getFriction());
