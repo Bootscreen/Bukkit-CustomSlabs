@@ -12,7 +12,7 @@ public class LogTopSlab extends GenericCuboidCustomBlock
 {
     public LogTopSlab(CustomSlabs plugin, Texture texture)
     {
-        super(plugin, plugin.getConfig().getString("log.name.top", "Log TopSlab"), new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F));
+        super(plugin, plugin.getConfig().getString("log.name.top", "Log TopSlab"), 126, 8, new  GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F));
         this.setStepSound(MaterialData.log.getStepSound());
         this.setHardness(MaterialData.log.getHardness());
         this.setFriction(MaterialData.log.getFriction());

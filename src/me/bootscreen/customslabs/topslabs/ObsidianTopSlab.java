@@ -13,7 +13,7 @@ public class ObsidianTopSlab extends GenericCuboidCustomBlock
 	
     public ObsidianTopSlab(CustomSlabs plugin, Texture texture)
     {
-        super(plugin, plugin.getConfig().getString("obsidian.name.top", "Obsidian TopSlab"), new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F));
+        super(plugin, plugin.getConfig().getString("obsidian.name.top", "Obsidian TopSlab"), 44, 8, new  GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F));
         this.setStepSound(MaterialData.obsidian.getStepSound());
         this.setHardness(MaterialData.obsidian.getHardness());
         this.setFriction(MaterialData.obsidian.getFriction());
