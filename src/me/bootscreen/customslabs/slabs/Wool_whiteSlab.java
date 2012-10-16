@@ -11,7 +11,7 @@ public class Wool_whiteSlab extends GenericCuboidCustomBlock
 	
     public Wool_whiteSlab(Plugin plugin, Texture texture)
     {
-        super(plugin, plugin.getConfig().getString("wool.white.name", "White Wool Slab"), 44, new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
+        super(plugin, plugin.getConfig().getString("wool.white.name.normal", "White Wool Slab"), 44, new GenericCuboidBlockDesign(plugin, texture, new int[] {1,0,0,0,0,1}, 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F));
         this.setStepSound(MaterialData.whiteWool.getStepSound());
         this.setHardness(MaterialData.whiteWool.getHardness());
         this.setFriction(MaterialData.whiteWool.getFriction());

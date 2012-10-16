@@ -54,6 +54,7 @@ public class Events implements Listener{
 					Slab_TopSlab.put(plugin.ClaySlab, MaterialData.clayBlock);
 					Slab_TopSlab.put(plugin.CrackedStoneBrickSlab, MaterialData.crackedStoneBricks);
 					Slab_TopSlab.put(plugin.DirtSlab, MaterialData.dirt);
+					Slab_TopSlab.put(plugin.GrassSlab, MaterialData.grass);
 					Slab_TopSlab.put(plugin.EndstoneSlab, MaterialData.endStone);
 					Slab_TopSlab.put(plugin.GlasSlab, MaterialData.glass);
 					Slab_TopSlab.put(plugin.GlowstoneSlab, MaterialData.glowstoneBlock);
@@ -117,6 +118,7 @@ public class Events implements Listener{
 				Slab_TopSlab.put(plugin.ClaySlab, plugin.ClayTopSlab);
 				Slab_TopSlab.put(plugin.CrackedStoneBrickSlab, plugin.CrackedStoneBrickTopSlab);
 				Slab_TopSlab.put(plugin.DirtSlab, plugin.DirtTopSlab);
+				Slab_TopSlab.put(plugin.GrassSlab, plugin.GrassTopSlab);
 				Slab_TopSlab.put(plugin.EndstoneSlab, plugin.EndstoneTopSlab);
 				Slab_TopSlab.put(plugin.GlasSlab, plugin.GlasTopSlab);
 				Slab_TopSlab.put(plugin.GlowstoneSlab, plugin.GlowstoneTopSlab);
